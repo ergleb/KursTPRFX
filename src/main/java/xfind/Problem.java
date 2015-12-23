@@ -114,5 +114,6 @@ public class Problem {
             result += tf.get(i)*ans.get(i);
         }
         System.out.println("result: "+(int)result);
+
     }
 }

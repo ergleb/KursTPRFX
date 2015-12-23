@@ -34,6 +34,7 @@ public class MainController {
     @FXML private TextField alpha_input;
     @FXML private TextArea ans;
     @FXML protected void handleCountButtonAction(ActionEvent event) {
+        magicString = new StringBuilder();
         int m = Integer.parseInt(m_select.getText());
 
 
@@ -67,8 +68,9 @@ public class MainController {
         for (int i = 0; i < initNV - 1; i++) {
             if (ans.get(i) > 0) magicString.append("x[" + (i + 1) + "]=" + ans.get(i) +"\n");
         }
-        magicString.append("Ответ: " + ans.get(initNV - 1)+"\n");
-        magicString.append("Задача оптимиста: "+"\n");
+        magicString.append("РћС‚РІРµС‚: " + ans.get(initNV - 1)+"\n");
+        magicString.append("РћСЃС‚Р°С‚РѕРє: " + problem.left(ans) +"\n");
+        magicString.append("Р—Р°РґР°С‡Р° РѕРїС‚РёРјРёСЃС‚Р°: "+"\n");
         FuzzyProblem lucky = new FuzzyProblem(m,a,alpha,l,k,t,alpha);
         lucky.lucky(alp);
         simplex = lucky.createSimplexProblem();
@@ -78,8 +80,9 @@ public class MainController {
         for (int i = 0; i < initNV - 1; i++) {
             if (ans.get(i) > 0) magicString.append("x[" + (i + 1) + "]=" + ans.get(i)+"\n");
         }
-        magicString.append("Ответ: " + ans.get(initNV - 1)+"\n");
-        magicString.append("Задача пессимиста: "+"\n");
+        magicString.append("РћС‚РІРµС‚: " + ans.get(initNV - 1)+"\n");
+        magicString.append("РћСЃС‚Р°С‚РѕРє: " + lucky.left(ans) +"\n");
+        magicString.append("Р—Р°РґР°С‡Р° РїРµСЃСЃРёРјРёСЃС‚Р°: "+"\n");
         FuzzyProblem unlucky = new FuzzyProblem(m,a,alpha,l,k,t,alpha);
         unlucky.unlucky(alp);
         simplex = unlucky.createSimplexProblem();
@@ -89,7 +92,8 @@ public class MainController {
         for (int i = 0; i < initNV - 1; i++) {
             if (ans.get(i) > 0) magicString.append("x[" + (i + 1) + "]=" + ans.get(i)+"\n");
         }
-        magicString.append("Ответ: " + ans.get(initNV - 1)+"\n");
+        magicString.append("РћС‚РІРµС‚: " + ans.get(initNV - 1)+"\n");
+        magicString.append("РћСЃС‚Р°С‚РѕРє: " + unlucky.left(ans) +"\n");
         this.ans.setText(magicString.toString());
     }
 }

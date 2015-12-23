@@ -84,6 +84,23 @@ public class Problem {
         return new Simplex(numberOfVariables,targetFunction,true,numberOfRestrictions,restrictions,restrictionSigns,restrictionConstants);
     }
 
+    public int left(List<Integer> ans){
+        int var = 0;
+        int left = 0;
+        for (int size: alpha){
+            List<List<Integer>> split = Actions.split(size, Arrays.asList(t));
+            for (List<Integer> card: split){
+                int thisLeft = size;
+                for (int i = 0; i < t.length; i++) {
+                    thisLeft -= card.get(i)*t[i];
+                }
+                left += ans.get(var)*thisLeft;
+                var++;
+            }
+        }
+        return left;
+    }
+
     public static void main(String[] args) {
         Problem problem = new Problem(1,new Integer[]{75},new Integer[]{92},3,new Integer[]{3,5,2},new Integer[]{32,18,12});
         //Problem problem = new Problem(3,new Integer[]{113,264,48},new Integer[]{250,190,150},3,new Integer[]{5,4,12},new Integer[]{54,42,30});

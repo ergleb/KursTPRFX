@@ -20,7 +20,7 @@ public class Main extends Application {
         String fxmlFile = "/fxml/main.fxml";
         FXMLLoader loader = new FXMLLoader();
         Parent root = (Parent) loader.load(getClass().getResourceAsStream(fxmlFile));
-        stage.setTitle("Решение задачи раскроя");
+        stage.setTitle("TPR");
         stage.setScene(new Scene(root));
         stage.show();
     }
